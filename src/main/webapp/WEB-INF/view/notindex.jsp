@@ -5,14 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 
-<h1>TEST</h1>
-
-
-
-<form name="usersearch" action="/carDrive/homepage/searchresults" method="#">
-<input type="text" name="q" placeholder = "search"/>
-<button> Enter </button>
-</form>
+<h1>BAM</h1>
+<h1>${queryresult}</h1>
 
 
 
