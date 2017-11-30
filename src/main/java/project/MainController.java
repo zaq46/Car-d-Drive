@@ -36,6 +36,10 @@ public class MainController {
 		// This returns a JSON or XML with the users
 		return userRepository.findAll();
 	}
+
+	// userList() is similar to the getAllUsers() function
+    // but will redirect to an html file that will display
+    // the users in a more organized fashion
 	@RequestMapping(value="/users", method = RequestMethod.GET)
 	public String usersList(Model model){
 		model.addAttribute("users", userRepository.findAll());
@@ -45,6 +49,9 @@ public class MainController {
 		// this maps to corresponding .html file
 		// with the same name
 	}
+
+	// removeUser() is called upon the pressing of a the remove button
+    // located in the users.html file.
 	@RequestMapping(value="/user/remove/{id}", method = RequestMethod.DELETE)
 	public String removeUser(@PathVariable(value="id") long userID){
 		//User user = userRepository.findOne(userID);		// return user to delete

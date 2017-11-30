@@ -24,6 +24,10 @@
             <th>First Name</th>
             <th>Email</th>
         </tr>
+        <!-- Iteration loop that generates a tuple row for every user -->
+        <!-- using a given set of entities(user) to get the id, lastName, -->
+        <!-- firstName and email. Displays a remove button that will call -->
+        <!-- a function to delete from database! AMAZING -->
         <tr th:each="user: ${users}">
             <td th:text="${user.id}"></td>
             <td th:text="${user.lastName}"></td>
@@ -34,7 +38,6 @@
                     <input type="hidden" name="_method" value="delete" />
                     <button type="submit" id="submitButton">Remove</button>
                 </form>
-                <!-- <form th:object="${user}" th:action="@{user/remove}" th:method="delete"/> -->
             </td>
         </tr>
     </table>
