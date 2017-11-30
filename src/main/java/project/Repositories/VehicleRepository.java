@@ -1,12 +1,11 @@
-package project;
+package project.Repositories;
 
 
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-
-import project.Vehicle;
+import project.Database.Vehicle;
 
 @Repository
 public interface VehicleRepository extends CrudRepository<Vehicle, Long> {
