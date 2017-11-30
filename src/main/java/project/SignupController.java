@@ -35,7 +35,6 @@ public class SignupController {
 			userRepository.save(n);
 			modelAndView.setViewName("main");
 			return modelAndView;
-
 		}
 		System.out.println("invalid email or password");
 		modelAndView.setViewName("signup");

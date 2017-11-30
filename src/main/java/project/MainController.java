@@ -39,10 +39,21 @@ public class MainController {
 	@RequestMapping(value="/users", method = RequestMethod.GET)
 	public String usersList(Model model){
 		model.addAttribute("users", userRepository.findAll());
+		//provides an iterated list that allows us to use it in thymeleaf
 
 		return "users";
 		// this maps to corresponding .html file
 		// with the same name
+	}
+	@RequestMapping(value="/user/remove/{id}", method = RequestMethod.DELETE)
+	public String removeUser(@PathVariable(value="id") long userID){
+		//User user = userRepository.findOne(userID);		// return user to delete
+		//userRepository.delete(user);						// delete returned user
+
+		userRepository.delete(userID);						// delete user from given userID parameter
+		return "redirect:/users";
+		//return "good luck my friend";
+
 	}
 
 }
