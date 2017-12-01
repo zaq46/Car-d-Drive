@@ -37,6 +37,8 @@ public class MainController {
 		// This returns a JSON or XML with the users
 		return userRepository.findAll();
 	}
+
+
 	@RequestMapping(value="/users", method = RequestMethod.GET)
 	public String usersList(Model model){
 		model.addAttribute("users", userRepository.findAll());
@@ -55,6 +57,13 @@ public class MainController {
 		return "redirect:/users";
 		//return "good luck my friend";
 
+	}
+
+	@GetMapping(path="/homepage")
+	public String homepage() {
+		//model.addAttribute("name", name);
+		return "homepage";
+		//return "main";
 	}
 	
 
