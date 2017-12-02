@@ -26,16 +26,14 @@ public class Customer {
 		this.customerId = customerId;
 	}
 
-	@JoinColumn(name = "userId")
-	@Column(name = "userId")
-	private User id;
-	
-	public User getId() {
-		return id;
+	private long userId;
+
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setId(User id) {
-		this.id = id;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	private String driversLicense;

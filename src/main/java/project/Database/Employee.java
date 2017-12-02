@@ -13,19 +13,6 @@ import javax.persistence.OneToOne;
 @Entity
 public class Employee {
 	
-	@JoinColumn(name = "userId")
-	@Column(name = "userId")
-	private User id;
-	
-	public User getId() {
-		return id;
-	}
-
-	public void setId(User id) {
-		this.id = id;
-	}
-	
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long EmployeeId;
@@ -37,4 +24,16 @@ public class Employee {
 	public void setEmployeeId(Long employeeId) {
 		EmployeeId = employeeId;
 	}
+	
+	private long userId;
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	
 }

@@ -62,8 +62,8 @@ public class MainController {
 	@GetMapping(path="/homepage")
 	public String homepage() {
 		//model.addAttribute("name", name);
-		return "homepage";
-		//return "main";
+		return "main";
+		//return "main"; 
 	}
 	
 
