@@ -1,32 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!-- <meta charset="UTF-8"> -->
-    <title>Search Results Page</title>
+<!-- <meta charset="UTF-8"> -->
+<title>Search Results Page</title>
 </head>
 <body>
-<div class="show-user">
-    <h1>Database </h1>
-    <table class="table table-striped">
-        <th> VIN </th>
-        <th> Make </th>
-        <th> Model </th>
-        <th> Year </th>
-        <th> Price </th>
-        <th> MPG </th>
+	<div class="show-user">
+		<h1>Database</h1>
+		<table class="table table-striped">
+			<th>VIN</th>
+			<th>Make</th>
+			<th>Model</th>
+			<th>Year</th>
+			<th>Price</th>
+			<th>MPG</th>
+			<th>COLOR</th>
 
-        <tr th:each="user: ${cd}">
-            <td th:text="${user.firstName}"></td>
-        </tr>
+			<tr th:each="vehicle: ${vehicles}">
+				<td th:text="${vehicle.vin}"></td>
+				<td th:text="${vehicle.make}"></td>
+				<td th:text="${vehicle.model}"></td>
+				<td th:text="${vehicle.year}"></td>
+				<td th:text="${vehicle.price}"></td>
+				<td th:text="${vehicle.mpg}"></td>
+				<td th:text="${vehicle.color}"></td>
 
-    </table>
-</div>
+
+			</tr>
+		</table>
+	</div>
 
 
 
 
 
-<script  src="js/index.js"></script>
+	<script src="js/index.js"></script>
 </body>
 </html>
