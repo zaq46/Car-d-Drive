@@ -32,16 +32,6 @@ public class LoginController {
 			}
 		}
 		return "index";
-
-		//
-		// if (u != null) {
-		// String p = String.valueOf(u.getPassword());
-		// if (p.equals(password)) {
-		// modelAndView.setViewName("main");
-		// return "main";
-		// }
-		// return "index";
-		// }
 	}
 
 }
