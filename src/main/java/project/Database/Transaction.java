@@ -45,16 +45,13 @@ public class Transaction {
 	public void setVin(String vehicle) {
 		this.vehicleVin = vehicle;
 	}
+	private Long userId;
 
-	@JoinColumn(name = "userId")
-	@Column(name = "userId")
-	private User userId;
-
-	public User getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(User userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 }
