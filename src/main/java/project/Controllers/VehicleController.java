@@ -1,7 +1,6 @@
 package project.Controllers;
 import java.sql.*;
-
-
+import java.util.ArrayList;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,60 +32,120 @@ public class VehicleController {
 	@Autowired
 	private VehicleRepository vehicleRepository;
 
-
-
-
 	@RequestMapping(value = "/homepage/searchresults")
-	public String addVehicle(@RequestParam("vin") String vinquery, @RequestParam("make") String makequery,
-							 @RequestParam("model") String modelquery,@RequestParam("year") String yearquery,
-							 @RequestParam("price") String pricequery,@RequestParam("color") String colorquery,
-							 @RequestParam("mpg") String mpgquery,
-							 Model model) {
-		Vehicle v = new Vehicle();
-		//vehicleRepository.deleteAll();
-		//model.addAttribute("vehicles", vehicleRepository.findByMpg(mpgquery));
-		//model.addAttribute("vehicles", vehicleRepository.findByAllFields(makequery, modelquery, yearquery));
+	public String searchVehicle(@RequestParam("vin") String vinquery, @RequestParam("make") String makequery,
+			@RequestParam("model") String modelquery, @RequestParam("year") String yearquery,
+			@RequestParam("price") String pricequery, @RequestParam("color") String colorquery,
+			@RequestParam("mpg") String mpgquery, Model model) {
 
-		if (vinquery != "" & makequery != "" & modelquery != "" & yearquery != "" & pricequery != "" &
-				colorquery != "" & mpgquery != "")
-		{
-			model.addAttribute("vehicles", vehicleRepository.findByMakeAndModelAndYearAndPriceAndColorAndMpgAndVin(makequery, modelquery, yearquery, pricequery,
-					colorquery, mpgquery, vinquery));
-		}
-		if (vinquery != "" & makequery == "" & modelquery == "" & yearquery == "" & pricequery == "" &
-				colorquery == "" & mpgquery == "")
-		{
-			model.addAttribute("vehicles", vehicleRepository.findByVin(vinquery));
+		ArrayList<Vehicle> list = new ArrayList<Vehicle>();
+// enhanced for loop for searching vehicles that satisfy all conditions.   
+		for (Vehicle v : vehicleRepository.findAll()) {
+
+			if (vinquery.isEmpty() && makequery.isEmpty() && modelquery.isEmpty() && yearquery.isEmpty()
+					&& pricequery.isEmpty() && colorquery.isEmpty() && mpgquery.isEmpty()) {
+				return "bam";
+			}
+			if (!vinquery.isEmpty()) {
+				if (!vinquery.equals(v.getVin())) {
+					continue;
+				}
+			}
+			if (!makequery.isEmpty()) {
+				if (!makequery.equals(v.getMake())) {
+					continue;
+				}
+			}
+			if (!modelquery.isEmpty()) {
+				if (!modelquery.equals(v.getModel())) {
+					continue;
+				}
+			}
+			if (!yearquery.isEmpty()) {
+				if (!yearquery.equals(v.getYear())) {
+					continue;
+				}
+			}
+			if (!pricequery.isEmpty()) {
+				if (!pricequery.equals(v.getPrice())) {
+					continue;
+				}
+			}
+			if (!colorquery.isEmpty()) {
+				if (!colorquery.equals(v.getColor())) {
+					continue;
+				}
+			}
+			if (!mpgquery.isEmpty()) {
+				if (!mpgquery.equals(v.getMpg())) {
+					continue;
+				}
+			}
+
+			list.add(v);
+
 		}
 
-		if (vinquery == "" & makequery != "" & modelquery == "" & yearquery == "" & pricequery == "" &
-				colorquery == "" & mpgquery == "")
-		{
-			model.addAttribute("vehicles", vehicleRepository.findByMake(makequery));
-		}
+		model.addAttribute("vehicles", list);
+		return "bam";
 
-		if (vinquery == "" & makequery == "" & modelquery != "" & yearquery == "" & pricequery == "" &
-				colorquery == "" & mpgquery == "")
-		{
-			model.addAttribute("vehicles", vehicleRepository.findByModel(modelquery));
-		}
+	}
 
-		if (vinquery == "" & makequery == "" & modelquery == "" & yearquery != "" & pricequery == "" &
-				colorquery == "" & mpgquery == "")
-		{
-			model.addAttribute("vehicles", vehicleRepository.findByYear(yearquery));
-		}
-		if (vinquery == "" & makequery == "" & modelquery == "" & yearquery == "" & pricequery != "" &
-				colorquery == "" & mpgquery == "")
-		{
-			model.addAttribute("vehicles", vehicleRepository.findByPrice(yearquery));
-		}
+}
 
-		if (vinquery == "" & makequery != "" & modelquery != "" & yearquery != "" & pricequery == "" &
-				colorquery == "" & mpgquery == "")
-		{
-			model.addAttribute("vehicles", vehicleRepository.findByMakeAndModelAndYear(makequery, modelquery, yearquery));
-		}
+
+
+//	@RequestMapping(value = "/homepage/searchresults")
+//	public String addVehicle(@RequestParam("vin") String vinquery, @RequestParam("make") String makequery,
+//							 @RequestParam("model") String modelquery,@RequestParam("year") String yearquery,
+//							 @RequestParam("price") String pricequery,@RequestParam("color") String colorquery,
+//							 @RequestParam("mpg") String mpgquery,
+//							 Model model) {
+//		Vehicle v = new Vehicle();
+//		//vehicleRepository.deleteAll();
+//		//model.addAttribute("vehicles", vehicleRepository.findByMpg(mpgquery));
+//		//model.addAttribute("vehicles", vehicleRepository.findByAllFields(makequery, modelquery, yearquery));
+//
+//		if (vinquery != "" & makequery != "" & modelquery != "" & yearquery != "" & pricequery != "" &
+//				colorquery != "" & mpgquery != "")
+//		{
+//			model.addAttribute("vehicles", vehicleRepository.findByMakeAndModelAndYearAndPriceAndColorAndMpgAndVin(makequery, modelquery, yearquery, pricequery,
+//					colorquery, mpgquery, vinquery));
+//		}
+//		if (vinquery != "" & makequery == "" & modelquery == "" & yearquery == "" & pricequery == "" &
+//				colorquery == "" & mpgquery == "")
+//		{
+//			model.addAttribute("vehicles", vehicleRepository.findByVin(vinquery));
+//		}
+//
+//		if (vinquery == "" & makequery != "" & modelquery == "" & yearquery == "" & pricequery == "" &
+//				colorquery == "" & mpgquery == "")
+//		{
+//			model.addAttribute("vehicles", vehicleRepository.findByMake(makequery));
+//		}
+//
+//		if (vinquery == "" & makequery == "" & modelquery != "" & yearquery == "" & pricequery == "" &
+//				colorquery == "" & mpgquery == "")
+//		{
+//			model.addAttribute("vehicles", vehicleRepository.findByModel(modelquery));
+//		}
+//
+//		if (vinquery == "" & makequery == "" & modelquery == "" & yearquery != "" & pricequery == "" &
+//				colorquery == "" & mpgquery == "")
+//		{
+//			model.addAttribute("vehicles", vehicleRepository.findByYear(yearquery));
+//		}
+//		if (vinquery == "" & makequery == "" & modelquery == "" & yearquery == "" & pricequery != "" &
+//				colorquery == "" & mpgquery == "")
+//		{
+//			model.addAttribute("vehicles", vehicleRepository.findByPrice(yearquery));
+//		}
+//
+//		if (vinquery == "" & makequery != "" & modelquery != "" & yearquery != "" & pricequery == "" &
+//				colorquery == "" & mpgquery == "")
+//		{
+//			model.addAttribute("vehicles", vehicleRepository.findByMakeAndModelAndYear(makequery, modelquery, yearquery));
+//		}
 
 
 
@@ -112,7 +171,7 @@ public class VehicleController {
             model.addAttribute("vehicles", vehicleRepository.findByMpg(mpgquery));
         }*/
 
-		try{
+	//	try{
             /*Class.forName("com.mysql.jdbc.Driver");
             Connection con=DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/CarDrive","springuser","4MhWX$A&*9$v");
@@ -171,19 +230,19 @@ public class VehicleController {
 			//System.out.println(vehicleRepository.findByMake(queryresult));
 
 
-		}catch(Exception e){
-			System.out.println(e);
-
-		}
+//		}catch(Exception e){
+//			System.out.println(e);
+//
+//		}
 
 
 		//model.addAttribute("vehicles", vehicleRepository.findByColor("blue"));
 
 		//need to implement switch statement for search by color, make, model, year.....
 		//need to implement check box to ask users what they search by
-
-		return "bam";
-
-	}
-
-}
+//
+//		return "bam";
+//
+//	}
+//
+//}
