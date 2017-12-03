@@ -18,7 +18,6 @@ public class Ev implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	
 	private String vehicleVin;
 
 	private String batteryLife;

@@ -1,4 +1,5 @@
 package project.Database;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -17,9 +18,8 @@ public class Motorcycle {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	
 	private String vehicleVin;
-	
+
 	public Long getId() {
 		return id;
 	}

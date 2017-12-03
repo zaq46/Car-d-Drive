@@ -26,7 +26,6 @@ public class HasUser {
 		this.id = id;
 	}
 
-	
 	private String address;
 
 	public String getAddress() {
@@ -37,7 +36,7 @@ public class HasUser {
 		this.address = address;
 
 	}
-	
+
 	private Long userId;
 
 	public Long getUserId() {
@@ -47,6 +46,5 @@ public class HasUser {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	
-	
+
 }
