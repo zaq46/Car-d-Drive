@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import groovy.lang.Grab;
 import project.Database.User;
+import project.Database.Vehicle;
 import project.Repositories.UserRepository;
 
 @Controller // This means that this class is a Controller
@@ -22,22 +23,15 @@ public class LoginController {
 	private UserRepository userRepository;
 
 	@GetMapping(path = "/validate")
-	public @ResponseBody ModelAndView validateUser(@RequestParam String email, @RequestParam String password) {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index");
-		User u = userRepository.findByEmail(email);
-		System.out.println(u);
+	public String validateUser(@RequestParam String email, @RequestParam String password) {
 
-		if (u != null) {
-			String p = String.valueOf(u.getPassword());
-			if (p.equals(password)) {
-				modelAndView.setViewName("main");
+		for (User u : userRepository.findAll()) {
+
+			if (email.equals(u.getEmail()) && password.equals(u.getPassword())) {
+				return "homepage";
 			}
-			return modelAndView;
-		} else {
-			return modelAndView;
 		}
-
+		return "index";
 	}
 
 }

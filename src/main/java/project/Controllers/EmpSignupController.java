@@ -34,7 +34,7 @@ public class EmpSignupController {
 		e.setUserId(id);
 		employeeRepository.save(e);
 		
-		return "main";
+		return "mainemployee";
 	}
 	
 	
