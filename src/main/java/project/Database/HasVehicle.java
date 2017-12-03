@@ -1,4 +1,5 @@
 package project.Database;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -16,9 +17,8 @@ public class HasVehicle {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	
 	private String vehicleVin;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -34,7 +34,7 @@ public class HasVehicle {
 	public void setVin(String vehicle) {
 		this.vehicleVin = vehicle;
 	}
-	
+
 	private String address;
 
 	public String getAddress() {
@@ -44,6 +44,5 @@ public class HasVehicle {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	
+
 }

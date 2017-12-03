@@ -1,4 +1,5 @@
 package project.Database;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -12,11 +13,11 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Transaction {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -34,10 +35,9 @@ public class Transaction {
 	public void setTotal(String total) {
 		this.total = total;
 	}
-	
-	
+
 	private String vehicleVin;
-	
+
 	public String getVin() {
 		return vehicleVin;
 	}
@@ -45,6 +45,7 @@ public class Transaction {
 	public void setVin(String vehicle) {
 		this.vehicleVin = vehicle;
 	}
+
 	private Long userId;
 
 	public Long getUserId() {

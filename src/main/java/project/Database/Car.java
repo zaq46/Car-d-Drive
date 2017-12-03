@@ -18,9 +18,8 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	
 	private String vehicleVin;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -35,6 +34,7 @@ public class Car {
 
 	public void setVin(String vehicle) {
 		this.vehicleVin = vehicle;
+
 	}
 
 	private String doorType;
