@@ -17,9 +17,8 @@ public class Truck {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@JoinColumn(name = "vehicleVin")
-	@Column(name = "vehicleVin")
-	private Vehicle vehicle;
+	
+	private String vehicleVin;
 	
 	public Long getId() {
 		return id;
@@ -29,12 +28,12 @@ public class Truck {
 		this.id = id;
 	}
 
-	public Vehicle getVin() {
-		return vehicle;
+	public String getVin() {
+		return vehicleVin;
 	}
 
-	public void setVin(Vehicle vehicle) {
-		this.vehicle = vehicle;
+	public void setVin(String vehicle) {
+		this.vehicleVin = vehicle;
 	}
 
 	private String horsepower, size;

@@ -35,16 +35,15 @@ public class Transaction {
 		this.total = total;
 	}
 	
-	@JoinColumn(name = "vehicleVin")
-	@Column(name = "vehicleVin")
-	private Vehicle vehicle;
 	
-	public Vehicle getVin() {
-		return vehicle;
+	private String vehicleVin;
+	
+	public String getVin() {
+		return vehicleVin;
 	}
 
-	public void setVin(Vehicle vehicle) {
-		this.vehicle = vehicle;
+	public void setVin(String vehicle) {
+		this.vehicleVin = vehicle;
 	}
 
 	@JoinColumn(name = "userId")

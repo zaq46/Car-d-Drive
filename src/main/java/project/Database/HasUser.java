@@ -26,28 +26,25 @@ public class HasUser {
 		this.id = id;
 	}
 
-	@JoinColumn(name = "address")
-	@Column(name = "address")
-	private Dealership address;
+	
+	private String address;
 
-	public Dealership getAddress() {
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(Dealership address) {
+	public void setAddress(String address) {
 		this.address = address;
 
 	}
 	
-	@JoinColumn(name = "userId")
-	@Column(name = "userId")
-	private User userId;
+	private Long userId;
 
-	public User getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(User userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 	
