@@ -59,12 +59,65 @@ public class MainController {
 
 	}
 
-	@GetMapping(path="/homepage")
+
+
+	@GetMapping(path="/homepage/")
 	public String homepage() {
 		//model.addAttribute("name", name);
 		return "main";
 		//return "main"; 
 	}
+
+    @GetMapping(path="/homepage/redirect")
+    public String redircect() {
+        //model.addAttribute("name", name);
+        return "homepage";
+        //return "main";
+    }
+
+    @GetMapping(path="/homepage/employeeredirect")
+    public String employeeredircect() {
+        //model.addAttribute("name", name);
+        return "homepageemployee";
+        //return "main";
+    }
+
+    @RequestMapping(value="/homepage/searchresultsemployee")
+    public String displayuser(/*@RequestParam("firstname") String firstname, */@RequestParam("lastname") String lastname,
+                              /*@RequestParam("email") String email, */Model model){
+
+
+	    model.addAttribute("users",userRepository.findByLastName(lastname));
+	    /*if(firstname != "" && lastname != "" && email == "")
+        {
+            model.addAttribute("users", userRepository.findByFirstNameAndLastName(firstname, lastname));
+        }
+
+        if(firstname != "" && lastname != "" && email != "")
+        {
+            model.addAttribute("users", userRepository.findByFirstNameAndLastNameAndEmail(firstname, lastname, email));
+        }
+
+        if(firstname != "" && lastname == "" && email == "")
+        {
+            model.addAttribute("users", userRepository.findByFirstName(firstname));
+        }
+
+        if(firstname == "" && lastname != "" && email == "")
+        {
+            model.addAttribute("users", userRepository.findByLastName(lastname));
+        }
+
+        if(firstname == "" && lastname == "" && email != "")
+        {
+            model.addAttribute("users", userRepository.findByEmail(email));
+        }*/
+
+        return "userresult"	;
+    }
+
+
+
 	
 
 }

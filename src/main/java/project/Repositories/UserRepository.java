@@ -9,6 +9,11 @@ import project.Database.User;
 
 public interface UserRepository extends CrudRepository<User, Long>  {
 
-	public User findByEmail(String email);
+	public Iterable<User> findByEmail(String email);
+	public Iterable<User>  findByFirstName(String firstname);
+	public Iterable<User>  findByLastName(String lastname);
+	public Iterable<User>  findByFirstNameAndLastName(String firstname, String lastname);
+	public Iterable<User>  findByFirstNameAndLastNameAndEmail(String firstname, String lastname, String email);
+
 	
 }
