@@ -4,7 +4,6 @@
 <head>
 <!-- <meta charset="UTF-8"> -->
 <title>Search Results Page</title>
-<link rel="stylesheet" type="text/css" href="css/arrow.css" />
 </head>
 <script src="https://www.w3schools.com/lib/w3.js"></script>
 <style>
@@ -35,6 +34,9 @@ i {
 	-webkit-transform: rotate(45deg);
 }
 </style>
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 img1colon">
+	<img src="image/featurporch.jpg"/>
+</div>
 
 <body>
 	<div class="show-user">
@@ -67,6 +69,7 @@ i {
 
 			<tr class="item" th:each="vehicle: ${vehicles}">
 				<td th:text="${vehicle.vin}"></td>
+
 				<td th:text="${vehicle.make}"></td>
 				<td th:text="${vehicle.model}"></td>
 				<td th:text="${vehicle.year}"></td>
@@ -78,6 +81,7 @@ i {
 		</table>
 
 	</div>
+
 	<script src="js/index.js"></script>
 
 

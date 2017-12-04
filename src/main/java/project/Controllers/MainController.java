@@ -70,19 +70,19 @@ public class MainController {
 		// return "main";
 	}
 
-	@GetMapping(path = "/homepage/redirect")
+	/*@GetMapping(path = "/homepage/redirect")
 	public String redircect() {
 		// model.addAttribute("name", name);
 		return "homepage";
 		// return "main";
-	}
+	}*/
 
-	@GetMapping(path = "/homepage/employeeredirect")
+	/*@GetMapping(path = "/homepage/employeeredirect")
 	public String employeeredircect() {
 		// model.addAttribute("name", name);
 		return "homepageemployee";
 		// return "main";
-	}
+	}*/
 
 	@RequestMapping(value = "/homepage/searchresultsemployee")
 	public String displayuser(@RequestParam("firstname") String firstname, @RequestParam("lastname") String lastname,

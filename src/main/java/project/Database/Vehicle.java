@@ -19,7 +19,7 @@ public class Vehicle implements Serializable {
 
 	private String vin;
 
-	private String make, model, year, color, price, mpg;
+	private String make, model, year, color, price, mpg, imagepath;
 
 	public String getVin() {
 		return vin;
@@ -84,5 +84,9 @@ public class Vehicle implements Serializable {
 	public void setMpg(String mpg) {
 		this.mpg = mpg;
 	}
+
+	public String getImagepath() {return imagepath;}
+
+	public String setImagePath(String imgpath) {return this.imagepath = imgpath;}
 
 }
