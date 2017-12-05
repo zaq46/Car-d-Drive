@@ -34,7 +34,7 @@ body {
 	background: -webkit-radial-gradient(0% 100%, ellipse cover, rgba(104,128,138,.4) 10%,rgba(138,114,76,0) 40%), linear-gradient(to bottom,  rgba(57,173,219,.25) 0%,rgba(42,60,87,.4) 100%), linear-gradient(135deg,  #670d10 0%,#092756 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
 }
-.signup {
+.enter-vehicle {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -42,7 +42,7 @@ body {
 	width:300px;
 	height:300px;
 }
-.signup h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+.enter-vehicle h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
 
 input {
 	width: 100%;
@@ -70,21 +70,21 @@ input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgb
 <body>
 <div class="enter-vehicle">
     <h1>Add Car</h1>
-    <form th:action="@{/vehicle-add}">
+    <form th:action="@{/vehicleAdd}">
+    	<input type="text" name="vin" placeholder="Vin" required="required" />
         <input type="text" name="make" placeholder="Make" required="required" />
         <input type="text" name="model" placeholder="Model" required="required" />
         <input type="text" name="year" placeholder="Year" required="required" />
         <input type="text" name="price" placeholder="Price" required="required" />
         <input type="text" name="color" placeholder="Color" required="required" />
         <input type="text" name="mpg" placeholder="MPG" required="required" />
-        <select>
+        <select name="type">
             <option value="car">Car</option>
             <option value="ev">Electric Vehicle</option>
             <option value="truck">Truck</option>
             <option value="motorcycle">Motorcycle</option>
         </select>
-        <a type="submit" class="btn btn-primary btn-block btn-large"
-           href="vehicle-add">Submit</a>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
 
     </form>
 </div>
