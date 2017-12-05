@@ -2,8 +2,9 @@ package project.Repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import project.Database.Customer;;
+import project.Database.Customer;
 
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
 
+	public Customer findByUserId(Long id);
 }

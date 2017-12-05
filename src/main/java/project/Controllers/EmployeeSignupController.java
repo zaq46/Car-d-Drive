@@ -33,7 +33,7 @@ public class EmployeeSignupController {
 			userRepository.save(n);
 			modelAndView.setViewName("redirect:/empSignup");
 			EmpSignupController.id = n.getId();
-
+			ProfileController.id =  n.getId();
 			return modelAndView;
 		}
 		System.out.println("invalid email or password");

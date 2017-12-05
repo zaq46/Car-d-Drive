@@ -35,5 +35,14 @@ public class Employee {
 		this.userId = userId;
 	}
 
+	private String passCode;
+
+	public String getPassCode() {
+		return passCode;
+	}
+
+	public void setPassCode(String passCode) {
+		this.passCode = passCode;
+	}
 	
 }

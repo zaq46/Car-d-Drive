@@ -28,6 +28,7 @@ public class LoginController {
 		for (User u : userRepository.findAll()) {
 
 			if (email.equals(u.getEmail()) && password.equals(u.getPassword())) {
+				ProfileController.id = u.getId();
 				return "homepage";
 			}
 		}
