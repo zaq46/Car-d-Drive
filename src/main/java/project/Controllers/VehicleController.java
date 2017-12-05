@@ -23,13 +23,35 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import groovy.lang.DelegatesTo.Target;
+import project.Database.Car;
+import project.Database.Ev;
+import project.Database.Motorcycle;
+import project.Database.Truck;
 import project.Database.Vehicle;
+import project.Repositories.CarRepository;
+import project.Repositories.EvRepository;
+import project.Repositories.MotercycleRepository;
+import project.Repositories.TruckRepository;
 import project.Repositories.VehicleRepository;
 
 @Controller
+
 public class VehicleController {
 	@Autowired
 	private VehicleRepository vehicleRepository;
+
+	@Autowired
+	private CarRepository carRep;
+
+	@Autowired
+	private EvRepository evRep;
+
+	@Autowired
+	private MotercycleRepository motRep;
+
+	@Autowired
+	private TruckRepository truckRep;
 
 	@RequestMapping(value = "/homepage/searchresults")
 	public String searchVehicle(@RequestParam("vin") String vinquery, @RequestParam("make") String makequery,
@@ -91,6 +113,50 @@ public class VehicleController {
 
 	}
 
+	@RequestMapping(value = "/vehicleAdd")
+	public String addVehicle(@RequestParam("vin") String vin, @RequestParam("make") String make,
+			@RequestParam("model") String model, @RequestParam("year") String year, @RequestParam("price") String price,
+			@RequestParam("color") String color, @RequestParam("mpg") String mpg, @RequestParam("type") String type) {
+
+		Vehicle v = new Vehicle();
+		v.setVin(vin);
+		v.setMake(make);
+		v.setModel(model);
+		v.setYear(year);
+		v.setPrice(price);
+		v.setColor(color);
+		v.setMpg(mpg);
+		vehicleRepository.save(v);
+
+		if (type.equals("car")) {
+			Car c = new Car();
+			c.setVin(vin);
+			carRep.save(c);
+		}
+		if (type.equals("ev")) {
+			Ev c = new Ev();
+			c.setVin(vin);
+			evRep.save(c);
+		}
+		if (type.equals("motorcycle")) {
+			Motorcycle c = new Motorcycle();
+			c.setVin(vin);
+			motRep.save(c);
+		}
+		if (type.equals("truck")) {
+			Truck c = new Truck();
+			c.setVin(vin);
+			truckRep.save(c);
+		}
+
+		return "redirect:/vehicleEntry";
+
+	}
+
+	// @RequestMapping(value = "/vehicle")
+	// public String vehicleEntry() {
+	// return "vehicleEntry";
+	// }
 }
 
 // @RequestMapping(value = "/homepage/searchresults")
