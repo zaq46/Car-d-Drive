@@ -27,6 +27,7 @@ import project.Database.Vehicle;
 import project.Repositories.VehicleRepository;
 
 @Controller
+@RequestMapping(path = "/vehicle")
 public class VehicleController {
 	@Autowired
 	private VehicleRepository vehicleRepository;
@@ -90,7 +91,30 @@ public class VehicleController {
 		return "bam";
 
 	}
+    @GetMapping(value="/vehicle-add")
+    public @ResponseBody ModelAndView addVehicle(@RequestParam("make") String make, @RequestParam("model") String model,
+                             @RequestParam("year") String year, @RequestParam("price") String price,
+                             @RequestParam("color") String color, @RequestParam("mpg") String mpg)
+	{ //@RequestParam("vin") String vin,
+    	ModelAndView modelAndView = new ModelAndView();
+        Vehicle v = new Vehicle();
+        //v.setVin(vin);
+        v.setMake(make);
+        v.setModel(model);
+        v.setYear(year);
+        v.setPrice(price);
+        v.setColor(color);
+        v.setMpg(mpg);
+        vehicleRepository.save(v);
+        modelAndView.setViewName("redirect:/vehicle");
 
+        return modelAndView;
+        //does not save to db yet
+    }
+    @RequestMapping(value="/vehicle")
+    public String vehicleEntry(){
+        return "vehicleEntry";
+    }
 }
 
 // @RequestMapping(value = "/homepage/searchresults")
