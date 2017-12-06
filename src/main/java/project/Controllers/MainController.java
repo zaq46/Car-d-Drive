@@ -41,6 +41,14 @@ public class MainController {
 		return userRepository.findAll();
 	}
 
+	@RequestMapping(value = "/homepage/listallusers")
+	public String getalluers(Model model) {
+
+		model.addAttribute("users", userRepository.findAll());
+		return "userresult";
+	}
+
+
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public String usersList(Model model) {
 		model.addAttribute("users", userRepository.findAll());

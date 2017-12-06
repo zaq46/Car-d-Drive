@@ -53,11 +53,22 @@ public class VehicleController {
 	@Autowired
 	private TruckRepository truckRep;
 
+
+	@RequestMapping(value = "/homepage/listall")
+	public String searchVehicle(Model model) {
+
+		model.addAttribute("vehicles", vehicleRepository.findAll());
+		return "bam";
+
+	}
+
+
+
 	@RequestMapping(value = "/homepage/searchresults")
 	public String searchVehicle(@RequestParam("vin") String vinquery, @RequestParam("make") String makequery,
-			@RequestParam("model") String modelquery, @RequestParam("year") String yearquery,
-			@RequestParam("price") String pricequery, @RequestParam("color") String colorquery,
-			@RequestParam("mpg") String mpgquery, Model model) {
+								@RequestParam("model") String modelquery, @RequestParam("year") String yearquery,
+								@RequestParam("price") String pricequery, @RequestParam("color") String colorquery,
+								@RequestParam("mpg") String mpgquery, Model model) {
 
 		ArrayList<Vehicle> list = new ArrayList<Vehicle>();
 		// enhanced for loop for searching vehicles that satisfy all conditions.
@@ -115,8 +126,8 @@ public class VehicleController {
 
 	@RequestMapping(value = "/vehicleAdd")
 	public String addVehicle(@RequestParam("vin") String vin, @RequestParam("make") String make,
-			@RequestParam("model") String model, @RequestParam("year") String year, @RequestParam("price") String price,
-			@RequestParam("color") String color, @RequestParam("mpg") String mpg, @RequestParam("type") String type) {
+							 @RequestParam("model") String model, @RequestParam("year") String year, @RequestParam("price") String price,
+							 @RequestParam("color") String color, @RequestParam("mpg") String mpg, @RequestParam("type") String type) {
 
 		Vehicle v = new Vehicle();
 		v.setVin(vin);

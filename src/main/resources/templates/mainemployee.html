@@ -113,16 +113,46 @@
 			</div>
 			<div class="collapse navbar-collapse" id="navbarmidle">
 				<div class="searchtxt">
-					<h1>SEARCH BY</h1>
+					<h1>SEARCH BY USERS</h1>
 				</div>
 				<form class="navbar-form navbar-left searchformmargin" action = "/homepage/searchresultsemployee" role="search">
 					<div class="form-group">
 						<input type="text" class="form-control searchform" name="firstname" placeholder = "first name"/>
 						<input type="text" class="form-control searchform" name="lastname" placeholder = "last name"/>
 						<input type="text" class="form-control searchform" name="email" placeholder = "email"/>
+                        <br/>
 						<button class="searchbutton"><span class="glyphicon glyphicon-search "></span></button>
+                        <br/>
 					</div>
+                </form>
+
+                <form class="navbar-form navbar-left searchformmargin" action = "/homepage/listallusers" role="search">
+                    <button class="searchbutton">List All</button>
+                </form>
+
+
+                <form class="navbar-form navbar-left searchformmargin" action = "/homepage/searchresults" role="search">
+                    <div class="searchtxt">
+                        <h1>SEARCH BY CAR</h1>
+                    </div>
+
+                    <input type="text" class="form-control searchform" name="vin" placeholder = "VIN"/>
+					<input type="text" class="form-control searchform" name="make" placeholder = "Make"/>
+					<input type="text" class="form-control searchform" name="model" placeholder = "Model"/>
+					<input type="text" class="form-control searchform" name="year" placeholder = "Year"/>
+					<input type="text" class="form-control searchform" name="price" placeholder = "Price"/>
+					<br/>
+					<input type="text" class="form-control searchform" name="color" placeholder = "Color"/>
+					<input type="text" class="form-control searchform" name="mpg" placeholder = "MPG"/>
+					<button class="searchbutton"><span class="glyphicon glyphicon-search "></span></button>
+					<br/>
 				</form>
+
+                <br/>
+                <form class="navbar-form navbar-left searchformmargin" action = "/homepage/listall" role="search">
+                    <button class="searchbutton">List All</button>
+                </form>
+
 			</div>
 		</nav>
 	</div>
