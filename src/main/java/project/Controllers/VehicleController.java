@@ -113,6 +113,71 @@ public class VehicleController {
 
 	}
 
+    //adds a car entry as well as an entry for general vehicle
+	@RequestMapping(value = "carAdd")
+	public String addCar(@RequestParam("vin") String vin, @RequestParam("make") String make,
+						 @RequestParam("model") String model, @RequestParam("year") String year,
+						 @RequestParam("price") String price, @RequestParam("color") String color,
+						 @RequestParam("mpg") String mpg, @RequestParam("door-type") String doorType){
+
+		//save the input into vehicle repo
+		saveVehicle(vin, make, model, year, price, color, mpg);
+
+		//save attributes into car repo
+		Car c = new Car();
+		c.setVin(vin);
+		c.setDoorType(doorType);
+		carRep.save(c);
+		return "redirect:/vehicleEntry";
+	}
+
+    //adds a truck entry as well as an entry for general vehicle
+	@RequestMapping(value = "truckAdd")
+    public String addTruck(@RequestParam("vin") String vin, @RequestParam("make") String make,
+                           @RequestParam("model") String model, @RequestParam("year") String year,
+                           @RequestParam("price") String price, @RequestParam("color") String color,
+                           @RequestParam("mpg") String mpg, @RequestParam("horsepower") String horsePower,
+                           @RequestParam("size") String size){
+        saveVehicle(vin, make, model, year, price, color, mpg);
+
+        Truck t = new Truck();
+        t.setVin(vin);
+        t.setSize(size);
+        t.setHorsepower(horsePower);
+        truckRep.save(t);
+	    return "redirect:/vehicleEntry";
+    }
+
+    //adds a motorcycle entry as well as an entry for general vehicle
+    @RequestMapping(value = "motorcycleAdd")
+    public String addMotorcycle(@RequestParam("vin") String vin, @RequestParam("make") String make,
+                           @RequestParam("model") String model, @RequestParam("year") String year,
+                           @RequestParam("price") String price, @RequestParam("color") String color,
+                           @RequestParam("mpg") String mpg, @RequestParam("style") String style){
+        saveVehicle(vin, make, model, year, price, color, mpg);
+
+        Motorcycle m = new Motorcycle();
+        m.setVin(vin);
+        m.setStyle(style);
+        motRep.save(m);
+        return "redirect:/vehicleEntry";
+    }
+
+    //adds a EV entry as well as an entry for general vehicle
+    @RequestMapping(value = "evAdd")
+    public String addEv(@RequestParam("vin") String vin, @RequestParam("make") String make,
+                                @RequestParam("model") String model, @RequestParam("year") String year,
+                                @RequestParam("price") String price, @RequestParam("color") String color,
+                                @RequestParam("mpg") String mpg, @RequestParam("batteryLife") String batteryLife){
+        saveVehicle(vin, make, model, year, price, color, mpg);
+
+        Ev x = new Ev();
+        x.setVin(vin);
+        x.setBatteryLife(batteryLife);
+        evRep.save(x);
+        return "redirect:/vehicleEntry";
+    }
+    //possible redundant or obselete as of 4pm 12/6/17
 	@RequestMapping(value = "/vehicleAdd")
 	public String addVehicle(@RequestParam("vin") String vin, @RequestParam("make") String make,
 			@RequestParam("model") String model, @RequestParam("year") String year, @RequestParam("price") String price,
@@ -132,6 +197,7 @@ public class VehicleController {
 			Car c = new Car();
 			c.setVin(vin);
 			carRep.save(c);
+			return "/carEntry";
 		}
 		if (type.equals("ev")) {
 			Ev c = new Ev();
@@ -151,6 +217,19 @@ public class VehicleController {
 
 		return "redirect:/vehicleEntry";
 
+	}
+
+	public void saveVehicle(String ve, String ma, String mo, String y,
+						String pr, String co, String mpg){
+		Vehicle v = new Vehicle();
+		v.setVin(ve);
+		v.setMake(ma);
+		v.setModel(mo);
+		v.setYear(y);
+		v.setPrice(pr);
+		v.setColor(co);
+		v.setMpg(mpg);
+		vehicleRepository.save(v);
 	}
 
 	// @RequestMapping(value = "/vehicle")

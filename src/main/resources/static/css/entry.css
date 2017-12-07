@@ -1,22 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<head>
-
-<title>Login Form</title>
-
-<meta name="description"
-	content="Scarica gratis il nostro Template HTML/CSS GARAGE. Se avete bisogno di un design per il vostro sito web GARAGE può fare per voi. Web Domus Italia" />
-<meta name="author" content="Web Domus Italia" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
-<link rel="stylesheet" type="text/css" href="css/slider.css" />
-<link rel="stylesheet" type="text/css" href="css/mystyle.css" />
-
-
-<style>
 /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
@@ -222,29 +203,3 @@ input:focus {
 	margin: -150px 0 0 -150px;
     font-size: 60px;
     }
-</style>
-<!-- font-family: georgia; -->
-
-</head>
-
-<body>
-	<h1 class="app-name">Car(d)Drive</h1>
-	<div class="login">
-		<h1>Login</h1>
-		<form th:action="@{/login/validate}">
-			<input type="text" name="email" placeholder="Email"
-				required="required" /> <input type="password" name="password"
-				placeholder="Password" required="required" />
-			<button type="submit" class="btn btn-primary btn-block btn-large">Let
-				me in.</button>
-			<a type="submit" class="btn btn-primary btn-block btn-large"
-				href="signup">Sign up as customer</a>
-			<a type="submit" class="btn btn-primary btn-block btn-large"
-				href="employeeSignup">Sign up as employee</a>
-		</form>
-	</div>
-
-	<script src="js/index.js"></script>
-
-</body>
-</html>
