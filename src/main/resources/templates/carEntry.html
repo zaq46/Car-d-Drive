@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- <meta charset="UTF-8"> -->
+    <link rel="stylesheet" type="text/css" href="css/entry.css"/>
+    <title>Car Entry</title>
+</head>
+<body>
+<div class="enter-vehicle">
+    <h1>Add Car</h1>
+    <form th:action="@{/carAdd}">
+        <input type="text" name="vin" placeholder="Vin" required="required" />
+        <input type="text" name="make" placeholder="Make" required="required" />
+        <input type="text" name="model" placeholder="Model" required="required" />
+        <input type="text" name="year" placeholder="Year" required="required" />
+        <input type="text" name="price" placeholder="Price" required="required" />
+        <input type="text" name="color" placeholder="Color" required="required" />
+        <input type="text" name="mpg" placeholder="MPG" required="required" />
+        <select name="door-type" placeholder="Door Type" required="required">
+            <option value="sedan">Sedan</option>
+            <option value="coup">Coup</option>
+        </select>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+
+    </form>
+</div>
+</body>
+</html>
