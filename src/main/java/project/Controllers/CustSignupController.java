@@ -30,7 +30,7 @@ public class CustSignupController {
 		c.setUserId(id);
 		customerRepository.save(c);
 
-		return "main";
+		return "redirect:/main";
 	}
 
 }
