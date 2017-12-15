@@ -10,15 +10,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import groovy.lang.Grab;
+import project.Database.HasUser;
 import project.Database.User;
 import project.Repositories.UserRepository;
+import project.Repositories.hasUserRepository;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path = "/employeeSignup") // This means
 public class EmployeeSignupController {
 	@Autowired
-	
 	private UserRepository userRepository;
+	
+	@Autowired
+	private hasUserRepository hasUserRep;
 
 	@GetMapping(path = "/add")
 	public @ResponseBody ModelAndView addNewUser(@RequestParam String firstName, @RequestParam String lastName,
@@ -34,6 +38,11 @@ public class EmployeeSignupController {
 			modelAndView.setViewName("redirect:/empSignup");
 			EmpSignupController.id = n.getId();
 			ProfileController.id =  n.getId();
+			
+			HasUser h = new HasUser();
+			h.setUserId(n.getId());
+			h.setAddress("1 Washington Sq");
+			hasUserRep.save(h);
 			return modelAndView;
 		}
 		System.out.println("invalid email or password");
