@@ -1,12 +1,11 @@
 package project.Repositories;
 
 
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import project.Database.HasVehicle; 
 
-import project.Database.HasUser; ;
+public interface HasVehicleRepository extends CrudRepository<HasVehicle, Long> {
 
-public interface HasUserRepository extends CrudRepository<HasUser, Long>{
-
-	
 }

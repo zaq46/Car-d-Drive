@@ -13,7 +13,7 @@ import groovy.lang.Grab;
 import project.Database.HasUser;
 import project.Database.User;
 import project.Repositories.UserRepository;
-import project.Repositories.hasUserRepository;
+import project.Repositories.HasUserRepository;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path = "/signup") // This means URL's start with /carDrive
@@ -23,7 +23,7 @@ public class CustomerSignupController {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private hasUserRepository hasUserRep;
+	private HasUserRepository hasUserRep;
 	
 
 	@GetMapping(path = "/add")

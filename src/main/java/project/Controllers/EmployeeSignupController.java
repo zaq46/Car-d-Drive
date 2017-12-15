@@ -13,7 +13,7 @@ import groovy.lang.Grab;
 import project.Database.HasUser;
 import project.Database.User;
 import project.Repositories.UserRepository;
-import project.Repositories.hasUserRepository;
+import project.Repositories.HasUserRepository;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path = "/employeeSignup") // This means
@@ -22,7 +22,7 @@ public class EmployeeSignupController {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private hasUserRepository hasUserRep;
+	private HasUserRepository hasUserRep;
 
 	@GetMapping(path = "/add")
 	public @ResponseBody ModelAndView addNewUser(@RequestParam String firstName, @RequestParam String lastName,

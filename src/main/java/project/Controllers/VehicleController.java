@@ -26,11 +26,13 @@ import org.springframework.web.servlet.ModelAndView;
 import groovy.lang.DelegatesTo.Target;
 import project.Database.Car;
 import project.Database.Ev;
+import project.Database.HasVehicle;
 import project.Database.Motorcycle;
 import project.Database.Truck;
 import project.Database.Vehicle;
 import project.Repositories.CarRepository;
 import project.Repositories.EvRepository;
+import project.Repositories.HasVehicleRepository;
 import project.Repositories.MotercycleRepository;
 import project.Repositories.TruckRepository;
 import project.Repositories.VehicleRepository;
@@ -52,7 +54,10 @@ public class VehicleController {
 
 	@Autowired
 	private TruckRepository truckRep;
-
+	
+	@Autowired
+	private HasVehicleRepository hasVehicleRep;
+	
 
 	@RequestMapping(value = "/homepage/listall")
 	public String searchVehicle(Model model) {
@@ -139,6 +144,12 @@ public class VehicleController {
 		c.setVin(vin);
 		c.setDoorType(doorType);
 		carRep.save(c);
+		
+		HasVehicle h = new HasVehicle();
+		h.setVin(vin);
+		h.setAddress("1 Washington Sq");
+		hasVehicleRep.save(h);
+		
 		return "redirect:/vehicleEntry";
 	}
 
@@ -156,6 +167,12 @@ public class VehicleController {
         t.setSize(size);
         t.setHorsepower(horsePower);
         truckRep.save(t);
+        
+        HasVehicle h = new HasVehicle();
+		h.setVin(vin);
+		h.setAddress("1 Washington Sq");
+		hasVehicleRep.save(h);
+		
 	    return "redirect:/vehicleEntry";
     }
 
@@ -171,6 +188,12 @@ public class VehicleController {
         m.setVin(vin);
         m.setStyle(style);
         motRep.save(m);
+        
+        HasVehicle h = new HasVehicle();
+		h.setVin(vin);
+		h.setAddress("1 Washington Sq");
+		hasVehicleRep.save(h);
+		
         return "redirect:/vehicleEntry";
     }
 
@@ -186,6 +209,12 @@ public class VehicleController {
         x.setVin(vin);
         x.setBatteryLife(batteryLife);
         evRep.save(x);
+        
+        HasVehicle h = new HasVehicle();
+		h.setVin(vin);
+		h.setAddress("1 Washington Sq");
+		hasVehicleRep.save(h);
+		
         return "redirect:/vehicleEntry";
     }
     //possible redundant or obselete as of 4pm 12/6/17
