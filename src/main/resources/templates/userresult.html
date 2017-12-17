@@ -57,7 +57,13 @@
             <td th:text="${user.firstName}"></td>
             <td th:text="${user.lastName}"></td>
             <td th:text="${user.email}"></td>
-
+			<td>
+					<form action="#" th:action="@{'/user/remove/{id}'(id=${user.id})}"
+						th:method="delete">
+						<input type="hidden" name="_method" value="delete" />
+						<button type="submit" id="submitButton">Remove</button>
+					</form> <!-- <form th:object="${user}" th:action="@{user/remove}" th:method="delete"/> -->
+				</td>
         </tr>
     </table>
 </div>
