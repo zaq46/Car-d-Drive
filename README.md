@@ -23,13 +23,22 @@ Gradle 4.3
 ```
 ...
 Create a folder anywhere and name it anything. (ex. cardrive)
+
 Go to our GitHub: https://github.com/zaq46/Car-d-Drive
+
 Click the green “Clone or Download” button and click on the URL to copy it.
+
 Go to your terminal and into the new directory that you created in step 3. There input
+
 \cardrive>git clone https://github.com/zaq46/Car-d-Drive.git
+
 Above is the link that you copied to just paste it in after typing “git clone”
+
 After the installation is complete type this in
+
 \cardrive>gradle bootRun
+
 This should output a lot of configurations and eventually a “started cardrive application” will appear.
+
 Type in localhost:8080 into your browser’s search bar and the login page should show.
 
